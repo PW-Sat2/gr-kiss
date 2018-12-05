@@ -57,7 +57,7 @@ class save_frame(gr.basic_block):
         array = bytearray(pmt.u8vector_elements(msg))
         packet = base64.b64encode(array)
 
-        time = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S:%f")
+        time = datetime.datetime.utcnow().strftime("%Y-%m-%d_%H:%M:%S:%f")
 
         self.file.write(time + "," + str(self.direction) + "," + packet + "\n")
         self.file.flush()
